@@ -1,21 +1,12 @@
-const axios = require('axios');
-
-// Bearer token provided by the user (Note: If this has expired, please replace it with a fresh one)
-const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiYXVkIjoiaHR0cDovLzIwLjI0NC41Ni4xNDQvZXZhbHVhdGlvbi1zZXJ2aWNlIiwiZW1haWwiOiJyaWRoaW1hZ2FyZzIzMDFAZ21haWwuY29tIiwiZXhwIjoxNzc3ODc0ODcyLCJpYXQiOjE3Nzc4NzM5NzIsImlzcyI6IkFmZm9yZCBNZWRpY2FsIFRlY2hub2xvZ2llcyBQcml2YXRlIExpbWl0ZWQiLCJqdGkiOiJmNTBjNWQ0Mi05YWIyLTQ4NWItOWU4Yi1mM2VmNjU0NTliN2UiLCJsb2NhbGUiOiJlbi1JTiIsIm5hbWUiOiJyaWRoaW1hIGdhcmciLCJzdWIiOiJlMmQ2ZDQ3MC1kOGE3LTQzM2ItOWZjOC02YzEzMDMxOWU3YmYifSwiZW1haWwiOiJyaWRoaW1hZ2FyZzIzMDFAZ21haWwuY29tIiwibmFtZSI6InJpZGhpbWEgZ2FyZyIsInJvbGxObyI6IjE4MTQ3IiwiYWNjZXNzQ29kZSI6InVrc2RXVCIsImNsaWVudElEIjoiZTJkNmQ0NzAtZDhhNy00MzNiLTlmYzgtNmMxMzAzMTllN2JmIiwiY2xpZW50U2VjcmV0IjoiSERGdWFzcmF6SHRNbWV3RSJ9.TcqmD-gcoCingeaMdt-7TnjmzPDNxp8uVq9xdMIKpzA";
-
-const API_BASE_URL = "http://20.207.122.201/evaluation-service";
+const apiClient = require('../apiClient');
 
 async function fetchDepots() {
-    const response = await axios.get(`${API_BASE_URL}/depots`, {
-        headers: { 'Authorization': `Bearer ${TOKEN}` }
-    });
+    const response = await apiClient.get('/depots');
     return response.data.depots || [];
 }
 
 async function fetchVehicles() {
-    const response = await axios.get(`${API_BASE_URL}/vehicles`, {
-        headers: { 'Authorization': `Bearer ${TOKEN}` }
-    });
+    const response = await apiClient.get('/vehicles');
     return response.data.vehicles || [];
 }
 

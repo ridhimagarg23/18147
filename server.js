@@ -2,8 +2,16 @@
 
 const express = require('express');
 const app = express();
+const { Log } = require('./logger');
 
 app.use(express.json()); 
+
+// Custom Middleware for logging requests
+app.use((req, res, next) => {
+    // Log the incoming request asynchronously
+    Log("backend", "info", "express-middleware", `${req.method} ${req.originalUrl}`);
+    next();
+});
 
 let data = [];
 

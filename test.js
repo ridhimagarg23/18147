@@ -1,6 +1,6 @@
 // http://20.207.122.201/evaluation-service/logs
 
-const axios = require('axios');
+const apiClient = require('./apiClient');
 
 async function Log(stack, level, package, message) {
     try {
@@ -11,7 +11,7 @@ async function Log(stack, level, package, message) {
             message: message
         };
 
-        const response = await axios.post('http://20.207.122.201/evaluation-service/logs', logData);
+        const response = await apiClient.post('/logs', logData);
         console.log('Log sent successfully:', response.status);
     } catch (error) {
         console.error('Error sending log:', error.message);
