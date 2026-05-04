@@ -1,3 +1,6 @@
-node_modules
-server.js
-registration-server.js
+node_modules/
+
+# Optional local files
+npm-debug.log
+.DS_Store
+.vscode/
